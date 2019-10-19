@@ -2,8 +2,9 @@
 import { color } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-
+// import { withReadme } from 'storybook-readme'
 import { Icon } from '../../'
+// import README from './README.md'
 import './stories.scss'
 
 const allRes = `
@@ -123,4 +124,6 @@ const Icons = () => (
   </ul>
 )
 
-storiesOf('Icon', module).add('default', () => Icons())
+storiesOf('图标', module)
+  // .addDecorator(withReadme(README))
+  .add('常用', () => Icons())
