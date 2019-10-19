@@ -64,10 +64,14 @@ typings/
 
 .vscode
 
-run/
+run
+
+package-lock.json
+
+# project
+
+static/
 
 dist/
 
 build/
-
-package-lock.json
