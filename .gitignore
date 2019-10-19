@@ -68,4 +68,6 @@ run/
 
 dist/
 
+build/
+
 package-lock.json
