@@ -2,7 +2,7 @@ import { configure, addParameters, addDecorator } from '@storybook/react'
 import { withA11y } from '@storybook/addon-a11y';
 import { setOptions } from '@storybook/addon-options'
 import { withInfo } from '@storybook/addon-info'
-import { withKnobs } from '@storybook/addon-knobs'
+// import { withKnobs } from '@storybook/addon-knobs'
 import { addReadme } from 'storybook-readme';
 
 import theme from './theme'
@@ -31,7 +31,7 @@ addParameters({
 });
 
 addDecorator((story, context) => withInfo()(story)(context))
-addDecorator(withKnobs)
+// addDecorator(withKnobs)
 addDecorator(addReadme);
 setOptions({
     name: 'NM UI',

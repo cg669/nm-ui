@@ -1,0 +1,25 @@
+@import '../../styles/import';
+
+$footer-prefix: #{$prefix}-footer;
+
+.#{$footer-prefix} {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #444;
+    text-align: center;
+    background: #fff;
+    padding: 10px 0;
+
+    &-sm {
+        font-size: 14px;
+    }
+
+    &-md {
+        font-size: 16px;
+    }
+
+    &-lg {
+        font-size: 18px;
+    }
+}
