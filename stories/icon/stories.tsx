@@ -1,11 +1,12 @@
 
+import { action } from '@storybook/addon-actions'
 import { color } from '@storybook/addon-knobs'
+import { withKnobs } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-// import { withReadme } from 'storybook-readme'
 import { Icon } from '../../'
-// import README from './README.md'
 import './stories.scss'
+
 
 const allRes = `
 arrow-double-down.svg
@@ -109,14 +110,14 @@ function copy(text: string) {
 const getRandomColor = () => '#' + ('00000' + ((Math.random() * 0x1000000) << 0).toString(16)).substr(-6)
 
 const Icons = () => (
-  <ul className="jedi-story">
+  <ul className="nm-story">
     {iconSrcs.map(src => {
       const initColor = color('Color', '#ffffff')
       const fill = initColor === '#ffffff' ? getRandomColor() : initColor
       return (
         // tslint:disable-next-line:jsx-no-lambda
         <li key={src} onClick={() => copy(src)}>
-          <Icon src={src} style={{ fill }} size="lg" />
+          <Icon src={src} style={{ fill }} size="lg" onClick={action('icon-click')} />
           <span>{src}</span>
         </li>
       )
@@ -125,5 +126,14 @@ const Icons = () => (
 )
 
 storiesOf('图标', module)
-  // .addDecorator(withReadme(README))
+  .addDecorator(withKnobs)
+  .addParameters({
+    readme: {
+      // Show readme before story
+      sidebar: `| 参数 | 说明 | 类型 | 默认值 |
+      | --- | --- | --- | --- |
+      | src | icon的图标地址 | any | - |
+      | size | 大小 | sm md lg file | sm |`
+    },
+  })
   .add('常用', () => Icons())

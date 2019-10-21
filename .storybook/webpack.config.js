@@ -1,6 +1,8 @@
 const path = require("path");
 const include = path.resolve(__dirname, '../');
 const autoprefixer = require('autoprefixer')
+const marked = require("marked");
+const renderer = new marked.Renderer();
 module.exports = {
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
@@ -8,10 +10,13 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx/,
-                loader: 'babel-loader!ts-loader',
+                test: /\.(ts|tsx)$/,
+                loader: require.resolve('babel-loader'),
                 exclude: /node_modules/,
-                include
+                include,
+                options: {
+                    presets: [['react-app', { flow: false, typescript: true }]],
+                },
             },
             {
                 test: /\.scss|.css$/,
@@ -87,6 +92,10 @@ module.exports = {
                     },
                     {
                         loader: 'markdown-loader',
+                        options: {
+                            pedantic: true,
+                            renderer
+                        }
                     },
                 ],
             },
